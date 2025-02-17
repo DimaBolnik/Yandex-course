@@ -16,10 +16,6 @@ public class Main {
 //        for (int i = 0; i < 7; i++) {
 //            System.out.println(--count);
 //        }
-//        int x = 14;
-//        int y = 20;
-//        int z = x % y;
-//        System.out.println(z);
 
         HashMap<String, String> map = new HashMap<>();
         map.put("key1", "value1");
