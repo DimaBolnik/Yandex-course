@@ -1,13 +1,15 @@
 package ru.dev.bolnik.sprint1;
 
+import com.sun.net.httpserver.HttpServer;
+
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.file.Files;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Main {
-
 
 
     public static void main(String[] args) throws IOException {
@@ -51,32 +53,27 @@ public class Main {
 //        LocalDateTime ldt = LocalDateTime.parse(in, dtf);
 //        System.out.println(ldt);
 //        LocalTime loc = LocalTime.now();
-        LocalDate localDateTime = LocalDate.now();
-        LocalDate birthDay = LocalDate.of(1988, Month.JANUARY,14);
-        Period period = Period.between(birthDay, localDateTime);
-        System.out.println("Мой возраст  = " + period.getYears() + " лет " + period.getMonths() + " месяцев " +
-                            period.getDays() + " дней");
+//        LocalDate localDateTime = LocalDate.now();
+//        LocalDate birthDay = LocalDate.of(1988, Month.JANUARY,14);
+//        Period period = Period.between(birthDay, localDateTime);
+//        System.out.println("Мой возраст  = " + period.getYears() + " лет " + period.getMonths() + " месяцев " +
+//                            period.getDays() + " дней");
 
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
     }
-    private static byte findMax(byte a, byte b) {
-        return (byte) Integer.max(a, b);
-    }
 
-    private static int findNumber(int[] arr, int n) {
-        int min = 0;
-        int max = arr.length -1;
-
-        while (min <= max) {
-            int mid = min + (max - min) / 2;
-            if (arr[mid] == n) {
-                return mid;
-            } else if (arr[mid] > n) {
-                max = mid - 1;
-            } else {
-                min = mid + 1;
-            }
+    static byte[] fizzBuzz(int n) {
+        String str = "";
+        if (n % 3 == 0) {
+            str = "Fizz";
         }
-        return -1;
+        if (n % 5 == 0) {
+            str += "Buzz";
+        }
+        if (str.equals("")) {
+            throw new RuntimeException("Invalid number: ");
+        }
+        return str.getBytes();
     }
 }
